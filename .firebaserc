@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "login-cb57a": {
+      "hosting": {
+        "ImagemFirebase": [
+          "fireimagem"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "login-cb57a"
+  }
+}
