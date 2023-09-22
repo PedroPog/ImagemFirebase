@@ -1,1 +1,6 @@
 <input type="file" (change)="onFileChange($event)">
+<div class="man">
+  <div *ngFor="let url of fileURLs | async">
+    <img src="{{ url }}" alt="">
+  </div>
+</div>
