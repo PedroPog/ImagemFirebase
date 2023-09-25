@@ -1,15 +1,17 @@
-<form class="add">
+<form [formGroup]="formGroup" class="add">
   <div class="img">
-    <img src="" alt="">
-    <button>Carregar</button>
+    <img class="imagem" [src]="imagem" alt="">
+    <button (click)="openDialog()">Selecione uma imagem</button>
+    <input type="text" formControlName="imagem" >
   </div>
+
   <div class="input">
     <label for="nome">Nome:</label>
-    <input type="text" name="nome">
+    <input type="text" formControlName="nome" required>
   </div>
   <div class="input">
     <label for="categoria">Categoria:</label>
-    <input type="text" name="categoria">
+    <input type="text" formControlName="categoria" required>
   </div>
-  <button type="submit">Submit</button>
+  <button (click)="onSalvar()" [disabled]="formGroup.invalid">Submit</button>
 </form>

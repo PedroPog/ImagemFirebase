@@ -6,35 +6,37 @@ import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { environment } from '../environments/environment';
-import { provideDatabase,getDatabase } from '@angular/fire/database';
-
-import{AngularFireModule} from '@angular/fire/compat';
-import{AngularFireStorageModule} from '@angular/fire/compat/storage';
+import { AngularFireModule } from '@angular/fire/compat';
 import { LojaComponent } from './components/loja/loja.component';
 import { TesteComponent } from './components/teste/teste.component';
-import { RealComponent } from './components/real/real.component';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { DialogComponent } from './components/loja/dialog/dialog.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatTabsModule} from '@angular/material/tabs';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LojaComponent,
-    TesteComponent,
-    RealComponent
-  ],
+  declarations: [AppComponent, LojaComponent, TesteComponent, DialogComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
+    MatDialogModule,
+    MatTabsModule,
     AngularFireStorageModule,
+    MatFormFieldModule,
     AngularFireModule.initializeApp(environment.firebase),
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: !isDevMode(),
       // Register the ServiceWorker as soon as the application is stable
       // or after 30 seconds (whichever comes first).
-      registrationStrategy: 'registerWhenStable:30000'
+      registrationStrategy: 'registerWhenStable:30000',
     }),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

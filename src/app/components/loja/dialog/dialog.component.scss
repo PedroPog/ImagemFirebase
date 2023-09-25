@@ -1,0 +1,35 @@
+.container {
+  position: relative;
+  height: 30vw;
+  width: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-content: center;
+
+  .inner {
+    position: relative;
+    height: 10vw;
+    width: 20vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    p {
+      color: black;
+      font-size: 14pt;
+      margin: 0;
+      font-family: fantasy;
+    }
+
+    .image {
+      width: 85%;
+      height: 75%;
+      object-fit: scale-down;
+      box-shadow: 2px 2px 3px 2px #00000070;
+      margin: 5%;
+    }
+  }
+}

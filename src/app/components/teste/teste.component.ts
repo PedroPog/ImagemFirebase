@@ -5,6 +5,7 @@ import { finalize, switchMap } from 'rxjs/operators';
 import { ListResult } from '@angular/fire/compat/storage/interfaces';
 import { Location } from '@angular/common';
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-teste',
@@ -13,23 +14,25 @@ import { getStorage, ref, getDownloadURL } from "firebase/storage";
 })
 export class TesteComponent {
   title = 'ImagemFirebase';
-  tipo = 'comida';
   name = '';
   fileURLs!: Observable<string[]>;
 
+  categoria = new FormControl();
+  tipo = new FormControl();
+
   constructor(
     private fs: AngularFireStorage,
+    private formBuilder: FormBuilder,
     private location: Location
   ){}
 
   ngOnInit() {
-
   }
 
   async onFileChange(event: any){
     const file = event.target.files[0];
     if(file){
-      const path = `imagem/${this.tipo}/${file.name}`;
+      const path = `imagem/${this.categoria.value}/${file.name}`;
       const uploadTask = await this.fs.upload(path,file);
       const url = await uploadTask.ref.getDownloadURL();
       console.log(url);
@@ -79,7 +82,7 @@ export class TesteComponent {
   }
 
   onCarregar(){
-    this.fileURLs = from(this.fs.ref(`imagem/${this.tipo}`).listAll()).pipe(
+    this.fileURLs = from(this.fs.ref(`imagem/${this.tipo.value}/`).listAll()).pipe(
       switchMap((listResult: ListResult) => {
         const observables = listResult.items.map(item => item.getDownloadURL());
         return from(Promise.all(observables));

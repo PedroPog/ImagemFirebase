@@ -1,11 +1,30 @@
-<input type="file" (change)="onFileChange($event)">
-<button (click)="onCarregar()">Carregar</button>
-<button (click)="onLimpar()">Limpar</button>
+<form class="add">
 
+  <input type="file" (change)="onFileChange($event)" [disabled]="categoria.invalid">
+
+  <button (click)="onLimpar()" [disabled]="!categoria.invalid">Limpar</button>
+
+  <div class="input">
+    <label for="categoria">Categoria:</label>
+    <input type="text" [formControl]="categoria" required>
+  </div>
+</form>
+
+<div class="select">
+  <label for="tipo">Escolha uma Categoria:</label>
+  <select name="tipo" id="tipo" [formControl]="tipo">
+    <option value="comida">Comida</option>
+    <option value="teste">Teste</option>
+  </select>
+
+  <button (click)="onCarregar()" [disabled]="tipo.invalid">Carregar</button>
+</div>
+
+<br>
+<hr>
 <div class="man">
   <div *ngFor="let url of fileURLs | async">
     <img src="{{ url }}" alt="">
     <button (click)="onDownFile(url)">Download</button>
   </div>
 </div>
-
