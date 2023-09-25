@@ -7,11 +7,11 @@ import { Location } from '@angular/common';
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  selector: 'app-teste',
+  templateUrl: './teste.component.html',
+  styleUrls: ['./teste.component.scss']
 })
-export class AppComponent {
+export class TesteComponent {
   title = 'ImagemFirebase';
   tipo = 'comida';
   name = '';

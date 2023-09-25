@@ -1,6 +1,5 @@
-<input type="file" (change)="onFileChange($event)">
-<div class="man">
-  <div *ngFor="let url of fileURLs | async">
-    <img src="{{ url }}" alt="">
-  </div>
-</div>
+<button routerLink="/loja">Loja</button>
+<button routerLink="/teste">Teste</button>
+<button routerLink="/real">Real</button>
+<br>
+<router-outlet></router-outlet>

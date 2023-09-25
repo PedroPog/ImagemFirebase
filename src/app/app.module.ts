@@ -10,10 +10,16 @@ import { provideDatabase,getDatabase } from '@angular/fire/database';
 
 import{AngularFireModule} from '@angular/fire/compat';
 import{AngularFireStorageModule} from '@angular/fire/compat/storage';
+import { LojaComponent } from './components/loja/loja.component';
+import { TesteComponent } from './components/teste/teste.component';
+import { RealComponent } from './components/real/real.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LojaComponent,
+    TesteComponent,
+    RealComponent
   ],
   imports: [
     BrowserModule,

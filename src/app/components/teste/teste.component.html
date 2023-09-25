@@ -1,0 +1,11 @@
+<input type="file" (change)="onFileChange($event)">
+<button (click)="onCarregar()">Carregar</button>
+<button (click)="onLimpar()">Limpar</button>
+
+<div class="man">
+  <div *ngFor="let url of fileURLs | async">
+    <img src="{{ url }}" alt="">
+    <button (click)="onDownFile(url)">Download</button>
+  </div>
+</div>
+
